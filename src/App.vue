@@ -1,12 +1,28 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">People</router-link> |
+      <router-link to="/details">Details</router-link>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'app',
+  data(){
+    return {
+      people: []
+    }
+  },
+  created(){
+    this.$store.dispatch('getPeople', 'https://swapi.co/api/people/');
+    // this.people = this.$store.getters.people;
+    // console.log(this.people);
+  }
+}
+</script>
 
 <style>
 #app {
